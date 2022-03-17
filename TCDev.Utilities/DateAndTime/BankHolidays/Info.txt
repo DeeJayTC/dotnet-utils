@@ -1,0 +1,2 @@
+﻿Bank Holiday calculation is taken from: https://github.com/nager/Nager.Date 
+Refactored and customized to fit our needs
