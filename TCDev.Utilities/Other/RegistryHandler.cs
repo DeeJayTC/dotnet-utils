@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.RegistryHandler.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -7,7 +7,7 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using TCDev.Utilities.Cryptography;
 
-namespace TCDev.Office.Core;
+namespace TCDev.Utilities.Windows;
 
 /// <summary>
 ///    Save and read data from the Windows Registry, encrypted
@@ -36,7 +36,10 @@ public static class RegistryHandler
          var key = Registry.CurrentUser.OpenSubKey(path, true);
          if (key != null)
          {
-            var serial = key.GetValue(entry) != null ? key.GetValue(entry).ToString() : "";
+            var serial = key.GetValue(entry) != null
+               ? key.GetValue(entry)
+                  .ToString()
+               : "";
             if (!string.IsNullOrEmpty(serial))
             {
                var data = serial.Decrypt(EncryptionCode);
@@ -76,7 +79,10 @@ public static class RegistryHandler
          var key = Registry.CurrentUser.OpenSubKey(path, true);
          if (key != null)
          {
-            var serial = key.GetValue(entry) != null ? key.GetValue(entry).ToString() : "";
+            var serial = key.GetValue(entry) != null
+               ? key.GetValue(entry)
+                  .ToString()
+               : "";
             if (string.IsNullOrEmpty(serial)) key.SetValue(entry, data);
          }
 
@@ -96,7 +102,10 @@ public static class RegistryHandler
          var key = Registry.CurrentUser.OpenSubKey(path, true);
          if (key != null)
          {
-            var serial = key.GetValue(entry) != null ? key.GetValue(entry).ToString() : "";
+            var serial = key.GetValue(entry) != null
+               ? key.GetValue(entry)
+                  .ToString()
+               : "";
             if (!string.IsNullOrEmpty(serial)) return true;
          }
 

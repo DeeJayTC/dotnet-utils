@@ -1,8 +1,8 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.FloatExtension.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
-namespace TeamWorkNet.Extensions.Numeric;
+namespace TCDev.Utilities.Numeric;
 
 public static class FloatExtensions
 {
@@ -16,7 +16,7 @@ public static class FloatExtensions
    /// <returns></returns>
    public static decimal PercentageOf(this float value, int percentOf)
    {
-      return (decimal) (value / percentOf * 100);
+      return (decimal)(value / percentOf * 100);
    }
 
    /// <summary>
@@ -27,7 +27,7 @@ public static class FloatExtensions
    /// <returns></returns>
    public static decimal PercentageOf(this float value, float percentOf)
    {
-      return (decimal) (value / percentOf * 100);
+      return (decimal)(value / percentOf * 100);
    }
 
    /// <summary>
@@ -38,7 +38,7 @@ public static class FloatExtensions
    /// <returns></returns>
    public static decimal PercentageOf(this float value, double percentOf)
    {
-      return (decimal) (value / percentOf * 100);
+      return (decimal)(value / percentOf * 100);
    }
 
    /// <summary>
@@ -49,7 +49,7 @@ public static class FloatExtensions
    /// <returns></returns>
    public static decimal PercentageOf(this float value, long percentOf)
    {
-      return (decimal) (value / percentOf * 100);
+      return (decimal)(value / percentOf * 100);
    }
 
    #endregion

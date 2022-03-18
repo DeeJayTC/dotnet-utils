@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.StringUtilities.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -33,9 +33,12 @@ public static class StringUtilities
             var idn = new IdnMapping();
 
             // Pull out and process domain name (throws ArgumentException on invalid)
-            var domainName = idn.GetAscii(match.Groups[2].Value);
+            var domainName = idn.GetAscii(match.Groups[2]
+               .Value);
 
-            return match.Groups[1].Value + domainName;
+            return match.Groups[1]
+                      .Value
+                   + domainName;
          }
       }
       catch (RegexMatchTimeoutException e)

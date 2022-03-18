@@ -1,11 +1,11 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.StringContent.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System.Net.Http;
 using System.Text;
 
-namespace TeamWorkNet.Helper.String;
+namespace TCDev.Utilities.StringExtensions;
 
 public class JsonContent : StringContent
 {

@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.IEnumerableExtensions.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -35,8 +35,13 @@ public static class IEnumerableExtensions
    /// <returns></returns>
    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> list)
    {
-      var r = new Random((int) DateTime.Now.Ticks);
-      var shuffledList = list.Select(x => new {Number = r.Next(), Item = x}).OrderBy(x => x.Number).Select(x => x.Item);
+      var r = new Random((int)DateTime.Now.Ticks);
+      var shuffledList = list.Select(x => new
+         {
+            Number = r.Next(), Item = x
+         })
+         .OrderBy(x => x.Number)
+         .Select(x => x.Item);
       return shuffledList.ToList();
    }
 
@@ -123,7 +128,8 @@ public static class IEnumerableExtensions
       if (collection == null)
          throw new ArgumentNullException("collection");
 
-      return collection.Skip(start).Take(count);
+      return collection.Skip(start)
+         .Take(count);
    }
 
    /// <summary>
@@ -146,7 +152,10 @@ public static class IEnumerableExtensions
       {
          property = parts[0];
 
-         if (parts.Length > 1) @descending = parts[1].ToLower().Contains("esc");
+         if (parts.Length > 1)
+            descending = parts[1]
+               .ToLower()
+               .Contains("esc");
 
          var prop = typeof(T).GetProperty(property);
 

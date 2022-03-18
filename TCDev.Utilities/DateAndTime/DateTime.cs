@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.DateTime.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -13,13 +13,7 @@ namespace TCDev.Utilities.DateAndTime;
 [Flags]
 public enum DaysOfWeek
 {
-   sunday = 1
-   , monday = 2
-   , tuesday = 4
-   , wednesday = 8
-   , thursday = 16
-   , friday = 32
-   , Saturday = 64
+   sunday = 1, monday = 2, tuesday = 4, wednesday = 8, thursday = 16, friday = 32, Saturday = 64
 }
 
 public static class DateTimeExtensions
@@ -31,9 +25,8 @@ public static class DateTimeExtensions
    /// <returns></returns>
    public static int Age(this DateTime dateOfBirth)
    {
-      if (DateTime.Today.Month < dateOfBirth.Month ||
-          DateTime.Today.Month == dateOfBirth.Month &&
-          DateTime.Today.Day < dateOfBirth.Day)
+      if (DateTime.Today.Month < dateOfBirth.Month
+          || DateTime.Today.Month == dateOfBirth.Month && DateTime.Today.Day < dateOfBirth.Day)
          return DateTime.Today.Year - dateOfBirth.Year - 1;
       return DateTime.Today.Year - dateOfBirth.Year;
    }
@@ -87,11 +80,13 @@ public static class DateTimeExtensions
    public static DateTime AddWorkdays(this DateTime d, int days, List<PublicHoliday> bankHolidays)
    {
       // start from a weekday
-      while (!d.IsWeekend() && bankHolidays.All(x => x.Date != d.Date)) d = d.AddDays(1.0);
+      while (!d.IsWeekend()
+             && bankHolidays.All(x => x.Date != d.Date)) d = d.AddDays(1.0);
       for (var i = 0; i < days; ++i)
       {
          d = d.AddDays(1.0);
-         while (!d.IsWeekend() && bankHolidays.All(x => x.Date != d.Date)) d = d.AddDays(1.0);
+         while (!d.IsWeekend()
+                && bankHolidays.All(x => x.Date != d.Date)) d = d.AddDays(1.0);
       }
 
       return d;
@@ -161,7 +156,8 @@ public static class DateTimeExtensions
    /// <returns></returns>
    public static DateTime Shift(this DateTime value, DayOfWeek dayOfWeek, Func<DateTime, DateTime> shift)
    {
-      if (shift != null && value.DayOfWeek == dayOfWeek) return shift.Invoke(value);
+      if (shift != null
+          && value.DayOfWeek == dayOfWeek) return shift.Invoke(value);
 
       return value;
    }
@@ -228,7 +224,7 @@ public static class DateTimeExtensions
    /// <returns></returns>
    public static DateTime StartOfWeek(this DateTime dt)
    {
-      var diff = 1 - (int) dt.DayOfWeek;
+      var diff = 1 - (int)dt.DayOfWeek;
       return dt.AddDays(diff);
    }
 
@@ -241,7 +237,7 @@ public static class DateTimeExtensions
    /// <returns></returns>
    public static DateTime EndOfWeek(this DateTime dt)
    {
-      var diff = 5 - (int) dt.DayOfWeek;
+      var diff = 5 - (int)dt.DayOfWeek;
       return dt.AddDays(diff);
    }
 }

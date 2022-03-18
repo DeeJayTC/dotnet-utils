@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/18
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.ExcelSerialDateConverter.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -12,21 +12,20 @@ public static class ExcelSerialDateConverter
    {
       // Excel/Lotus 123 have a bug with 29-02-1900. 1900 is not a
       // leap year, but Excel/Lotus 123 think it is...
-      if (nDay == 29 && nMonth == 02 && nYear == 1900)
+      if (nDay == 29
+          && nMonth == 02
+          && nYear == 1900)
          return 60;
 
       // DMY to Modified Julian calculatie with an extra substraction of 2415019.
-      var nSerialDate = 1461 * (nYear + 4800 + (nMonth - 14) / 12) / 4 +
-         367 * (nMonth - 2 - 12 * ((nMonth - 14) / 12)) / 12 -
-         3 * (nYear + 4900 + (nMonth - 14) / 12) / 100 / 4 +
-         nDay - 2415019 - 32075;
+      var nSerialDate = 1461 * (nYear + 4800 + (nMonth - 14) / 12) / 4 + 367 * (nMonth - 2 - 12 * ((nMonth - 14) / 12)) / 12 - 3 * (nYear + 4900 + (nMonth - 14) / 12) / 100 / 4 + nDay - 2415019 - 32075;
 
       if (nSerialDate < 60)
          // Because of the 29-02-1900 bug, any <B style="COLOR: black; BACKGROUND-COLOR: #a0ffff">serial date</B> 
          // under 60 is one off... Compensate.
          nSerialDate--;
 
-      return (int) nSerialDate;
+      return (int)nSerialDate;
    }
 }
 

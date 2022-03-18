@@ -1,21 +1,23 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.DateTimeFormat.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
-namespace TeamWorkNet.Extensions.DateTime;
+using System;
+
+namespace TCDev.Utilities.DateTimeExtensions;
 
 public static class DateTimeFormat
 {
-   private static readonly System.DateTime UnixRefereceDataTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0).ToUniversalTime();
+   private static readonly DateTime UnixRefereceDataTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToUniversalTime();
 
    /// <summary>
    ///    Time passed since 1st, January 1970
    /// </summary>
    /// <param name="System.DateTime">Value from to which calculate unix reference</param>
    /// <returns>Total seconds password since 1st, January 1970</returns>
-   public static long GetUnixTime(this System.DateTime DateTime)
+   public static long GetUnixTime(this DateTime DateTime)
    {
-      return (long) (DateTime.ToUniversalTime() - UnixRefereceDataTime).TotalSeconds;
+      return (long)(DateTime.ToUniversalTime() - UnixRefereceDataTime).TotalSeconds;
    }
 
    /// <summary>
@@ -23,9 +25,9 @@ public static class DateTimeFormat
    /// </summary>
    /// <param name="System.DateTime">Value to convert in user friendly string</param>
    /// <returns>User friendly System.DateTime string e.g '3 mins ago'</returns>
-   public static string When(this System.DateTime DateTime)
+   public static string When(this DateTime DateTime)
    {
-      return DateTime.When(System.DateTime.Now);
+      return DateTime.When(DateTime.Now);
    }
 
    /// <summary>
@@ -34,7 +36,7 @@ public static class DateTimeFormat
    /// <param name="System.DateTime">Value to convert in user friendly string</param>
    /// <param name="currentTime">Value to take reference as current time when converting to user friendly string</param>
    /// <returns>User friendly System.DateTime string e.g '3 days ago'</returns>
-   public static string When(this System.DateTime DateTime, System.DateTime currentTime)
+   public static string When(this DateTime DateTime, DateTime currentTime)
    {
       var timespan = currentTime - DateTime;
 
@@ -62,7 +64,7 @@ public static class DateTimeFormat
    /// <param name="System.DateTime">Value to convert in user friendly string</param>
    /// <param name="currentTime">Value to take reference as current time when converting to user friendly string</param>
    /// <returns>User friendly System.DateTime string e.g '3 days ago'</returns>
-   public static string When_DE(this System.DateTime DateTime, System.DateTime currentTime)
+   public static string When_DE(this DateTime DateTime, DateTime currentTime)
    {
       var timespan = currentTime - DateTime;
 

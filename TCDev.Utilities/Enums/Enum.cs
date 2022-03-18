@@ -1,11 +1,10 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.Enum.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
-using System;
 using System.ComponentModel;
 
-namespace TCDev.Utilities.Reflection;
+namespace TCDev.Utilities.Reflection.Enum;
 
 public static class Enums
 {
@@ -17,20 +16,22 @@ public static class Enums
    /// <returns></returns>
    public static string GetEnumDescription<TEnum>(int value)
    {
-      return GetEnumDescription((Enum) (object) (TEnum) (object) value); // ugly, but works
+      return GetEnumDescription((System.Enum)(object)(TEnum)(object)value); // ugly, but works
    }
 
-   public static string GetEnumDescription(Enum value)
+   public static string GetEnumDescription(System.Enum value)
    {
-      var fi = value.GetType().GetField(value.ToString());
+      var fi = value.GetType()
+         .GetField(value.ToString());
 
       var attributes =
-         (DescriptionAttribute[]) fi.GetCustomAttributes(
+         (DescriptionAttribute[])fi.GetCustomAttributes(
             typeof(DescriptionAttribute),
             false);
 
       if (attributes.Length > 0)
-         return attributes[0].Description;
+         return attributes[0]
+            .Description;
       return value.ToString();
    }
 }

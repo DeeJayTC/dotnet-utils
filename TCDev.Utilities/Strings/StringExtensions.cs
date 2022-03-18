@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.StringExtensions.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -10,12 +10,12 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace TCDev.Utilities.Strings;
+namespace TCDev.Utilities.StringExtensions;
 
 /// <summary>
 ///    This class contain extension functions for string objects
 /// </summary>
-public static class StringExtension
+public static class StringExtensions
 {
    public static bool ContainsAny(this string theString, char[] characters)
    {
@@ -31,18 +31,6 @@ public static class StringExtension
    public static bool In(this string value, params string[] stringValues)
    {
       return stringValues.Any(otherValue => string.CompareOrdinal(value, otherValue) == 0);
-   }
-
-   /// <summary>
-   ///    Converts string to enum object
-   /// </summary>
-   /// <typeparam name="T">Type of enum</typeparam>
-   /// <param name="value">String value to convert</param>
-   /// <returns>Returns enum object</returns>
-   public static T ToEnum<T>(this string value)
-      where T : struct
-   {
-      return (T) Enum.Parse(typeof(T), value, true);
    }
 
    /// <summary>
@@ -96,6 +84,36 @@ public static class StringExtension
    {
       return string.Format(value, args);
    }
+
+
+   /// <summary>
+   ///    Converts string to enum object
+   /// </summary>
+   /// <typeparam name="T">Type of enum</typeparam>
+   /// <param name="value">String value to convert</param>
+   /// <returns>Returns enum object</returns>
+   public static T ToEnum<T>(this string value)
+      where T : struct
+   {
+      return (T)Enum.Parse(typeof(T), value, true);
+   }
+
+   /// <summary>
+   ///    Convert hex String to bytes representation
+   /// </summary>
+   /// <param name="hexString">Hex string to convert into bytes</param>
+   /// <returns>Bytes of hex string</returns>
+   public static byte[] HexToBytes(this string hexString)
+   {
+      if (hexString.Length % 2 != 0)
+         throw new ArgumentException(string.Format("HexString cannot be in odd number: {0}", hexString));
+
+      var retVal = new byte[hexString.Length / 2];
+      for (var i = 0; i < hexString.Length; i += 2)
+         retVal[i / 2] = byte.Parse(hexString.Substring(i, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+
+      return retVal;
+   }
 }
 
 public static class StringExtensions2
@@ -137,7 +155,7 @@ public static class StringExtensions2
          // if you need SafeParse then you should create
          // another method specially for that.
          var tc = TypeDescriptor.GetConverter(typeof(T));
-         result = (T) tc.ConvertFrom(value)!;
+         result = (T)tc.ConvertFrom(value)!;
       }
 
       return result;
@@ -156,6 +174,7 @@ public static class StringExtensions2
       using MD5 md5 = new MD5CryptoServiceProvider();
       var originalBytes = Encoding.Default.GetBytes(value);
       var encodedBytes = md5.ComputeHash(originalBytes);
-      return BitConverter.ToString(encodedBytes).Replace("-", string.Empty);
+      return BitConverter.ToString(encodedBytes)
+         .Replace("-", string.Empty);
    }
 }

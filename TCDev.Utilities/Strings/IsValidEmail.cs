@@ -1,12 +1,12 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.IsValidEmail.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System.Text.RegularExpressions;
 
-namespace TeamWorkNet.Extensions.String;
+namespace TCDev.Utilities.StringExtensions;
 
-public static partial class StringExtension
+public static class StringExtension
 {
    public static bool IsValidEmail(this string text)
    {

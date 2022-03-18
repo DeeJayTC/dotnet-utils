@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.ObservableCollection.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;

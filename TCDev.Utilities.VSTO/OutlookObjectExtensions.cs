@@ -1,10 +1,11 @@
-﻿// TCDev 2022/03/18
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/18
+// TCDev.Utilities.VSTO.OutlookObjectExtensions.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System.Runtime.InteropServices;
+using Microsoft.Office.Interop.Outlook;
 
-namespace TCDev.Office.Core.Extensions;
+namespace TCDev.Utilities.VSTO;
 
 /// <summary>
 ///    helps saving custom properties on VSTO Items in Outlook

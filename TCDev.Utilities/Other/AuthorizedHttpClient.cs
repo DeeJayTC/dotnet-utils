@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.AuthorizedHttpClient.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace TeamworkIntegrationFramework.Utility;
+namespace TCDev.Utilities.Http;
 
 public class AuthorizedHttpClient : HttpClient
 {

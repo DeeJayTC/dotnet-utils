@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.DatetimeCalculations.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
@@ -21,7 +21,8 @@ public static class DatetimeCalculations
 
       var monthDiff = Math.Abs(to.Year * 12 + (to.Month - 1) - (from.Year * 12 + (from.Month - 1)));
 
-      if (from.AddMonths(monthDiff) > to || to.Day < from.Day)
+      if (from.AddMonths(monthDiff) > to
+          || to.Day < from.Day)
          return monthDiff - 1;
       return monthDiff;
    }

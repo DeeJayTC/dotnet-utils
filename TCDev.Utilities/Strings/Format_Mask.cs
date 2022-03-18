@@ -1,10 +1,10 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.Format_Mask.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
-namespace TeamWorkNet.Extensions.String;
+namespace TCDev.Utilities.StringExtensions;
 
-public static partial class StringExtension
+public static class StringExtension
 {
    /// <summary>
    ///    Formats the string according to the specified mask

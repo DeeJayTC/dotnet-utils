@@ -1,20 +1,20 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.DateTimeExtensions.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
 using System.Globalization;
 
-namespace TeamWorkNet.Extensions.DateTime;
+namespace TCDev.Utilities.DateTimeExtensions;
 
-public static partial class DateTimeExtensions
+public static class DateTimeExtensions
 {
    /// <summary>
    ///    Is a given Date on a Weekend?
    /// </summary>
    /// <param name="value"></param>
    /// <returns></returns>
-   public static bool IsWeekend(this System.DateTime value)
+   public static bool IsWeekend(this DateTime value)
    {
       return value.DayOfWeek == DayOfWeek.Sunday || value.DayOfWeek == DayOfWeek.Saturday;
    }
@@ -43,7 +43,7 @@ public static partial class DateTimeExtensions
    /// <param name="d"></param>
    /// <param name="days"></param>
    /// <returns></returns>
-   public static System.DateTime AddWorkdays(this System.DateTime d, int days)
+   public static DateTime AddWorkdays(this DateTime d, int days)
    {
       // start from a weekday
       while (d.DayOfWeek.IsWeekday()) d = d.AddDays(1.0);
@@ -64,8 +64,7 @@ public static partial class DateTimeExtensions
    /// <param name="endDate"></param>
    /// <param name="compareTime"></param>
    /// <returns></returns>
-   public static bool IsBetween(this System.DateTime dt, System.DateTime startDate, System.DateTime endDate,
-      bool compareTime = false)
+   public static bool IsBetween(this DateTime dt, DateTime startDate, DateTime endDate, bool compareTime = false)
    {
       return compareTime
          ? dt >= startDate && dt <= endDate
@@ -77,9 +76,9 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="value"></param>
    /// <returns></returns>
-   public static bool IsLeapYear(this System.DateTime value)
+   public static bool IsLeapYear(this DateTime value)
    {
-      return System.DateTime.DaysInMonth(value.Year, 2) == 29;
+      return DateTime.DaysInMonth(value.Year, 2) == 29;
    }
 
 
@@ -88,21 +87,22 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="dateTime"></param>
    /// <returns></returns>
-   public static System.DateTime GetLastDayOfMonth(this System.DateTime dateTime)
+   public static DateTime GetLastDayOfMonth(this DateTime dateTime)
    {
-      return new System.DateTime(dateTime.Year, dateTime.Month, 1).AddMonths(1).AddDays(-1);
+      return new DateTime(dateTime.Year, dateTime.Month, 1).AddMonths(1)
+         .AddDays(-1);
    }
 
    /// <summary>
    ///    Converts a System.DateTime object to Unix timestamp
    /// </summary>
    /// <returns>The Unix timestamp</returns>
-   public static long ToUnixTimestamp(this System.DateTime date)
+   public static long ToUnixTimestamp(this DateTime date)
    {
-      var unixEpoch = new System.DateTime(1970, 1, 1, 0, 0, 0);
+      var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0);
       var unixTimeSpan = date - unixEpoch;
 
-      return (long) unixTimeSpan.TotalSeconds;
+      return (long)unixTimeSpan.TotalSeconds;
    }
 
    /// <summary>
@@ -110,24 +110,24 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="s"></param>
    /// <returns></returns>
-   public static System.DateTime? ToDateTime(this string s)
+   public static DateTime? ToDateTime(this string s)
    {
-      System.DateTime dtr;
-      var tryDtr = System.DateTime.TryParse(s, out dtr);
-      return tryDtr ? dtr : new System.DateTime?();
+      DateTime dtr;
+      var tryDtr = DateTime.TryParse(s, out dtr);
+      return tryDtr ? dtr : new DateTime?();
    }
 
 
-   public static System.DateTime ToDateTimeExactMax(this string s, string format)
+   public static DateTime ToDateTimeExactMax(this string s, string format)
    {
-      System.DateTime date;
-      if (System.DateTime.TryParseExact(s,
+      DateTime date;
+      if (DateTime.TryParseExact(s,
              format,
              CultureInfo.InvariantCulture,
              DateTimeStyles.None,
              out date))
          return date;
-      return System.DateTime.MaxValue;
+      return DateTime.MaxValue;
    }
 
    /// <summary>
@@ -135,17 +135,20 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="s"></param>
    /// <returns></returns>
-   public static System.DateTime ToDateTimeExactMax(this string s)
+   public static DateTime ToDateTimeExactMax(this string s)
    {
-      string[] format = {"yyyyMMdd"};
-      System.DateTime date;
-      if (System.DateTime.TryParseExact(s,
+      string[] format =
+      {
+         "yyyyMMdd"
+      };
+      DateTime date;
+      if (DateTime.TryParseExact(s,
              format,
              CultureInfo.InvariantCulture,
              DateTimeStyles.None,
              out date))
          return date;
-      return System.DateTime.MaxValue;
+      return DateTime.MaxValue;
    }
 
 
@@ -154,29 +157,32 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="s"></param>
    /// <returns></returns>
-   public static System.DateTime ToDateTimeExactMin(this string s)
+   public static DateTime ToDateTimeExactMin(this string s)
    {
-      string[] format = {"yyyyMMdd"};
-      System.DateTime date;
-      if (System.DateTime.TryParseExact(s,
+      string[] format =
+      {
+         "yyyyMMdd"
+      };
+      DateTime date;
+      if (DateTime.TryParseExact(s,
              format,
              CultureInfo.InvariantCulture,
              DateTimeStyles.None,
              out date))
          return date;
-      return System.DateTime.MinValue;
+      return DateTime.MinValue;
    }
 
-   public static System.DateTime ToDateTimeExactMin(this string s, string format)
+   public static DateTime ToDateTimeExactMin(this string s, string format)
    {
-      System.DateTime date;
-      if (System.DateTime.TryParseExact(s,
+      DateTime date;
+      if (DateTime.TryParseExact(s,
              format,
              CultureInfo.InvariantCulture,
              DateTimeStyles.None,
              out date))
          return date;
-      return System.DateTime.MinValue;
+      return DateTime.MinValue;
    }
 
    /// <summary>
@@ -188,9 +194,10 @@ public static partial class DateTimeExtensions
    ///    Double elapsed = dtStart.ElapsedSeconds();
    /// </example>
    /// <seealso cref="Elapsed()" />
-   public static double ElapsedSeconds(this System.DateTime input)
+   public static double ElapsedSeconds(this DateTime input)
    {
-      return System.DateTime.Now.Subtract(input).TotalSeconds;
+      return DateTime.Now.Subtract(input)
+         .TotalSeconds;
    }
 
    /// <summary>
@@ -198,7 +205,7 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="dateTime"></param>
    /// <returns></returns>
-   public static string ToOracleSqlDate(this System.DateTime dateTime)
+   public static string ToOracleSqlDate(this DateTime dateTime)
    {
       return string.Format("to_date('{0}','dd.mm.yyyy hh24.mi.ss')", dateTime.ToString("dd.MM.yyyy HH:mm:ss"));
    }
@@ -208,8 +215,8 @@ public static partial class DateTimeExtensions
    /// </summary>
    /// <param name="date"></param>
    /// <returns></returns>
-   public static System.DateTime BeginningOfTheMonth(this System.DateTime date)
+   public static DateTime BeginningOfTheMonth(this DateTime date)
    {
-      return new System.DateTime(date.Year, date.Month, 1);
+      return new DateTime(date.Year, date.Month, 1);
    }
 }

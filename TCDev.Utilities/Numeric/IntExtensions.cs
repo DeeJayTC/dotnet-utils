@@ -1,8 +1,8 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.IntExtensions.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
-namespace TeamWorkNet.Extensions.Numeric;
+namespace TCDev.Utilities.Numeric;
 
 public static class IntExtensions
 {
@@ -35,7 +35,7 @@ public static class IntExtensions
    {
       decimal result = 0;
       if (position > 0 && total > 0)
-         result = position / (decimal) total * 100;
+         result = position / (decimal)total * 100;
       return result;
    }
 
@@ -45,7 +45,7 @@ public static class IntExtensions
 
       decimal result = 0;
       if (position > 0 && total > 0)
-         result = (decimal) position / total * 100;
+         result = (decimal)position / total * 100;
       return result;
    }
 
@@ -57,7 +57,7 @@ public static class IntExtensions
    /// <returns>The result</returns>
    public static decimal PercentageOf(this int number, float percent)
    {
-      return (decimal) (number * percent / 100);
+      return (decimal)(number * percent / 100);
    }
 
    /// <summary>
@@ -70,7 +70,7 @@ public static class IntExtensions
    {
       decimal result = 0;
       if (position > 0 && total > 0)
-         result = position / (decimal) total * 100;
+         result = position / (decimal)total * 100;
       return result;
    }
 
@@ -82,7 +82,7 @@ public static class IntExtensions
    /// <returns>The result</returns>
    public static decimal PercentageOf(this int number, double percent)
    {
-      return (decimal) (number * percent / 100);
+      return (decimal)(number * percent / 100);
    }
 
    /// <summary>
@@ -95,7 +95,7 @@ public static class IntExtensions
    {
       decimal result = 0;
       if (position > 0 && total > 0)
-         result = position / (decimal) total * 100;
+         result = position / (decimal)total * 100;
       return result;
    }
 
@@ -145,7 +145,7 @@ public static class IntExtensions
    {
       decimal result = 0;
       if (position > 0 && total > 0)
-         result = position / (decimal) total * 100;
+         result = position / (decimal)total * 100;
       return result;
    }
 

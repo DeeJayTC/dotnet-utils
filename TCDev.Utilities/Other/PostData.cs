@@ -1,11 +1,11 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.PostData.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System.Collections.Generic;
 using System.Text;
 
-namespace TeamWorkNet.Base.Helper;
+namespace TCDev.Utilities.Helper;
 
 public class PostData
 {
@@ -53,8 +53,7 @@ public class PostData
 
 public enum PostDataParamType
 {
-   Field
-   , File
+   Field, File
 }
 
 public class PostDataParam

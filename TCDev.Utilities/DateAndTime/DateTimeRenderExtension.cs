@@ -1,16 +1,17 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.DateTimeRenderExtension.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
+using System;
 using System.Text;
 
 namespace TCDev.Utilities.DateTimeUtils;
 
 public static class DateTimeRenderExtension
 {
-   public static string ToTimeAgo(this System.DateTime dt)
+   public static string ToTimeAgo(this DateTime dt)
    {
-      var span = System.DateTime.Now - dt;
+      var span = DateTime.Now - dt;
       if (span.Days > 365)
       {
          var years = span.Days / 365;
@@ -45,14 +46,14 @@ public static class DateTimeRenderExtension
       return string.Empty;
    }
 
-   public static string ToLongFullDate(this System.DateTime Date)
+   public static string ToLongFullDate(this DateTime Date)
    {
       var sb = new StringBuilder();
 
 
-      if (Date.Date == System.DateTime.Today)
+      if (Date.Date == DateTime.Today)
          sb.Append("Today ");
-      else if (Date.Date == System.DateTime.Today.AddDays(-1))
+      else if (Date.Date == DateTime.Today.AddDays(-1))
          sb.Append("Yesterday ");
       else
          sb.Append("");
@@ -62,21 +63,21 @@ public static class DateTimeRenderExtension
       return sb.ToString();
    }
 
-   public static string ToContractDateWithWarnings(this System.DateTime Date)
+   public static string ToContractDateWithWarnings(this DateTime Date)
    {
       var sb = new StringBuilder();
 
-      if (Date > System.DateTime.Now.AddDays(30))
+      if (Date > DateTime.Now.AddDays(30))
          sb.Append(Date.ToString("d"));
-      else if (Date < System.DateTime.Now.AddDays(30))
+      else if (Date < DateTime.Now.AddDays(30))
          sb.Append(Date.ToString("d") + "&nbsp; <i style='color:yellow' class='fa fa-warning'></i>");
 
-      else if (Date < System.DateTime.Now) sb.Append(Date.ToString("d") + "&nbsp; <i style='color:red' class='fa fa-warning'></i>");
+      else if (Date < DateTime.Now) sb.Append(Date.ToString("d") + "&nbsp; <i style='color:red' class='fa fa-warning'></i>");
 
       return sb.ToString();
    }
 
-   public static string ToRenderedNumber(this System.DateTime date)
+   public static string ToRenderedNumber(this DateTime date)
    {
       return date.ToString("yyymmdd");
    }

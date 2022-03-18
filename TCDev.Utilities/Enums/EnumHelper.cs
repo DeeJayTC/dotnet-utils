@@ -1,22 +1,24 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2022/03/17
+// TCDev.Utilities.EnumHelper.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
-using System;
 using System.ComponentModel;
 
-namespace TCDev.Utilities.Enums;
+namespace TCDev.Utilities.Reflection.Enum;
 
 public static class EnumHelper
 {
    public static string DescriptionAttr<T>(this T source)
    {
-      var fi = source.GetType().GetField(source.ToString());
+      var fi = source.GetType()
+         .GetField(source.ToString());
 
-      var attributes = (DescriptionAttribute[]) fi.GetCustomAttributes(
+      var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
          typeof(DescriptionAttribute), false);
 
-      if (attributes.Length > 0) return attributes[0].Description;
+      if (attributes.Length > 0)
+         return attributes[0]
+            .Description;
       return source.ToString();
    }
 }
@@ -34,7 +36,7 @@ public static class Enum<T>
 
    public static T Parse(string value, bool ignoreCase)
    {
-      return (T) Enum.Parse(typeof(T), value, ignoreCase);
+      return (T)System.Enum.Parse(typeof(T), value, ignoreCase);
    }
 
    public static bool TryParse(string value, out T returnedValue)
@@ -46,7 +48,7 @@ public static class Enum<T>
    {
       try
       {
-         returnedValue = (T) Enum.Parse(typeof(T), value, ignoreCase);
+         returnedValue = (T)Enum.Parse(typeof(T), value, ignoreCase);
          return true;
       }
       catch

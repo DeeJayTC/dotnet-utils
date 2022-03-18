@@ -1,10 +1,10 @@
-// TCDev 2022/03/17
-// Apache 2.0 License
+// TCDev.de 2022/03/17
+// TCDev.Utilities.TypeConverter.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System;
 
-namespace TCDev.Office.Core.Extensions;
+namespace TCDev.Utilities.Types;
 
 public static class TCTypeConverter
 {
@@ -35,13 +35,13 @@ public static class TCTypeConverter
             if (value == null || value.Equals(""))
                return default;
 
-            return (T) Convert.ChangeType(value, u);
+            return (T)Convert.ChangeType(value, u);
          }
 
          if (value == null || value.Equals(""))
             return default;
 
-         return (T) Convert.ChangeType(value, t);
+         return (T)Convert.ChangeType(value, t);
       }
 
       catch
@@ -60,19 +60,19 @@ public static class TCTypeConverter
          if (u != null)
          {
             if (value == null || value.Equals(""))
-               return (T) ifError;
+               return (T)ifError;
 
-            return (T) Convert.ChangeType(value, u);
+            return (T)Convert.ChangeType(value, u);
          }
 
          if (value == null || value.Equals(""))
             return ifError.To<T>();
 
-         return (T) Convert.ChangeType(value, t);
+         return (T)Convert.ChangeType(value, t);
       }
       catch
       {
-         return (T) ifError;
+         return (T)ifError;
       }
    }
 }

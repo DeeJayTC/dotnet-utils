@@ -1,12 +1,14 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.DateTimeFormatting.cs
 // https://www.github.com/deejaytc/dotnet-utils
+
+using System;
 
 namespace TCDev.Utilities.DateTimeUtils;
 
 public static class DateTimeFormatting
 {
-   public static string ElapsedTime(System.DateTime dtEvent)
+   public static string ElapsedTime(DateTime dtEvent)
    {
       var TS = DateTime.Now - dtEvent;
       var intYears = DateTime.Now.Year - dtEvent.Year;
@@ -24,7 +26,7 @@ public static class DateTimeFormatting
       return $"{dtEvent.ToShortDateString()} {dtEvent.ToShortTimeString()} ago";
    }
 
-   public static string ToFriendlyDateString(this System.DateTime Date)
+   public static string ToFriendlyDateString(this DateTime Date)
    {
       var FormattedDate = "";
       if (Date.Date == DateTime.Today)
@@ -38,7 +40,9 @@ public static class DateTimeFormatting
          FormattedDate = Date.ToString("MMMM dd, yyyy");
 
       //append the time portion to the output
-      FormattedDate += " @ " + Date.ToString("t").ToLower();
+      FormattedDate += " @ "
+                       + Date.ToString("t")
+                          .ToLower();
       return FormattedDate;
    }
 }

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCDev.Utilities", "TCDev.Ut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCDev.Utilities.NetCore", "TCDev.Utilities.NetCore\TCDev.Utilities.NetCore.csproj", "{B2FF27DA-3FEF-4A3A-BD32-31EDC2FFAB33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCDev.Utilities.VSTO", "TCDev.Utilities.VSTO\TCDev.Utilities.VSTO.csproj", "{2813EC19-F9B3-4A09-807D-DD79F53870CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B2FF27DA-3FEF-4A3A-BD32-31EDC2FFAB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2FF27DA-3FEF-4A3A-BD32-31EDC2FFAB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2FF27DA-3FEF-4A3A-BD32-31EDC2FFAB33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2813EC19-F9B3-4A09-807D-DD79F53870CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2813EC19-F9B3-4A09-807D-DD79F53870CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2813EC19-F9B3-4A09-807D-DD79F53870CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2813EC19-F9B3-4A09-807D-DD79F53870CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

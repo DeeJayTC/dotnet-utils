@@ -1,13 +1,12 @@
-﻿// TCDev.de 2021/08/30
-// TCDev.Utilities.NetCore.CORSSetup.cs
+﻿// TCDev.de 2022/03/18
+// TCDev.Utilities.NetCore.CorsHelper.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TCDev.Utilities.NetCore.StartupExtension;
 
-namespace TCDev.Utilities.NetCore;
+namespace TCDev.Utilities.NetCore.StartupExtension;
 
 public static class CorsSetup
 {

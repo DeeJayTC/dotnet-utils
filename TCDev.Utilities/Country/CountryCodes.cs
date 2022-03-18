@@ -1,5 +1,5 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.CountryCodes.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 namespace TCDev.Utilities;
@@ -12,16 +12,12 @@ public enum CountryCode
    /// <summary>
    ///    Andorra
    /// </summary>
-   AD
-
-   ,
+   AD,
 
    /// <summary>
    ///    United Arab Emirates
    /// </summary>
-   AE
-
-   ,
+   AE,
 
    /// <summary>
    ///    Afghanistan

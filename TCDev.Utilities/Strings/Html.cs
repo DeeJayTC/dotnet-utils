@@ -1,10 +1,10 @@
-﻿// TCDev 2022/03/17
-// Apache 2.0 License
+﻿// TCDev.de 2021/08/30
+// TCDev.Utilities.Html.cs
 // https://www.github.com/deejaytc/dotnet-utils
 
 using System.Text.RegularExpressions;
 
-namespace TCDev.Utilities.Strings;
+namespace TCDev.Utilities.StringExtensions;
 
 public static class Html
 {
