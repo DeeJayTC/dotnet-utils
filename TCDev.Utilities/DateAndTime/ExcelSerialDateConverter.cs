@@ -1,23 +1,13 @@
-﻿// TCDev 2022/03/17
+﻿// TCDev 2022/03/18
 // Apache 2.0 License
 // https://www.github.com/deejaytc/dotnet-utils
+
+using System;
 
 namespace TCDev.Utilities.DateTimeUtils;
 
 public static class ExcelSerialDateConverter
 {
-   public static int ToExcelSerialDate(this System.DateTime value)
-   {
-      if (value.Day == 29 && value.Month == 02 && value.Year == 1900) return 60;
-      long nSerialDate = 1461 * (value.Year + 4800 + (value.Month - 14) / 12) / 4 +
-         367 * (value.Month - 2 - 12 * ((value.Month - 14) / 12)) / 12 -
-         3 * (value.Year + 4900 + (value.Month - 14) / 12) / 100 / 4 +
-         value.Day - 2415019 - 32075;
-
-      if (nSerialDate < 60) nSerialDate--;
-      return (int) nSerialDate;
-   }
-
    public static int ToExcelSerialDate(long nDay, long nMonth, long nYear)
    {
       // Excel/Lotus 123 have a bug with 29-02-1900. 1900 is not a
@@ -42,7 +32,7 @@ public static class ExcelSerialDateConverter
 
 public static class ExcelSerialDate
 {
-   public static System.DateTime ToDateTime(this int pSerialDate)
+   public static DateTime ToDateTime(this int pSerialDate)
    {
       int nDay;
       int nMonth;
@@ -77,6 +67,6 @@ public static class ExcelSerialDate
       }
 
       // Datum aus den Integer Werten erstellen und im Format TT.MM.JJJJ zurückgeben
-      return new System.DateTime(nYear, nMonth, nDay);
+      return new DateTime(nYear, nMonth, nDay);
    }
 }

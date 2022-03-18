@@ -1,4 +1,4 @@
-﻿// TCDev 2022/03/17
+﻿// TCDev 2022/03/18
 // Apache 2.0 License
 // https://www.github.com/deejaytc/dotnet-utils
 
@@ -7,6 +7,9 @@ using System.Reflection;
 
 namespace TCDev.Office.Core;
 
+/// <summary>
+///    Find a specific object in VSTO by ID and Folder
+/// </summary>
 public static class OutlookObjectFinder
 {
    public static T FindExistingItem<T>(MAPIFolder folder, object searchObjectWithID, string idPropertyName)
